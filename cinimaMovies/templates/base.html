@@ -1,0 +1,88 @@
+{% load static %}
+<!doctype html>
+<html lang="Ar">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>cinimaMovies</title>
+
+    
+    <!-- Bootstrap core CSS -->
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Favicons -->
+
+
+<meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/product.css' %}" rel="stylesheet">
+
+  </head>
+  <body>
+    <nav class="site-header sticky-top container-fluid p-1">
+  <div class="container-fluid d-flex flex-column flex-md-row justify-content-between">
+  
+  {% if not request.user.is_authenticated and not "/registration/" in request.get_full_path %}
+  <a class="py-2 d-none d-md-inline-block text-white btn btn-primary" href="{% url 'regitraion'  %}"> أنشأ حساب</a>
+  <a class="py-2 d-none d-md-inline-block text-white btn btn-primary" href="{% url 'login' %}">تسجيل الدخول</a>
+  {% elif request.user.is_authenticated %}
+  <a class="py-2 d-none d-md-inline-block text-white btn btn-primary" href="{% url 'logout'  %}">تسجيل الخروج</a>
+  <a class="py-2 d-none d-md-inline-block text-white" href="#"> {{user}}</a> 
+
+  {% endif %}
+  <a class="py-2 d-none d-md-inline-block text-white" href="#">تواصل معنا</a>
+  <a class="py-2 d-none d-md-inline-block text-white" href="#">من نحن ؟</a>
+  <a class="py-2 d-none d-md-inline-block text-white" href="#">أشهر المسلسلات</a>
+  <a class="py-2 d-none d-md-inline-block text-white" href="#">أشهر الأفلام </a>
+  <a class="py-2 d-none d-md-inline-block text-white" href="#">مراجعات المسلسلات</a>
+  <a class="py-2 d-none d-md-inline-block text-white" href="#">مراجعات الأفلام</a>
+  <a class="py-2 d-none d-md-inline-block text-white" href="{% url 'Home' %}">القائمة الرئيسية</a>
+
+  <a class="py-2 text-white" href="{% url 'Home' %}" aria-label="cinimaMovies">
+    <h5>سينيما موفيز</h5>    
+  </a>
+
+</div>
+</nav>
+
+{% block registration %}
+{% endblock  %}
+
+{% block login %}
+{% endblock  %}
+
+{% block MoviesDetail %}
+{% endblock MoviesDetail %}
+
+{% block MoviesReviewList %}
+{% endblock MoviesReviewList %}
+
+
+{% block review %}
+{% endblock review %}
+
+
+{% block container %}
+{% endblock %}
+
+{% block content %}
+{% endblock%}
+
+
+{% block movies_container %}
+{% endblock %}
+
+
+
+
+{% comment %} <footer class="container py-5">
+  <small class="d-block mb-5 text-center">cinimaMovies &copy; 2017-2020</small> 
+</footer> {% endcomment %}
+  
+</html>

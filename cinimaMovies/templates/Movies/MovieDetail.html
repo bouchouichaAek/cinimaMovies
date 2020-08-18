@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block MoviesDetail %}
+
+{% for movie in movieList  %}
+<div class="container-fluid">
+<div class="card border-0 float-right m-5 pr-5" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title text-center font-weight-bold">{{movie.movieTitle}}</h5>
+        <p class="card-text text-right ">{{movie.description}}</p>
+        <p class="card-text text-right">{{movie.duration}}  :<strong> مدة الفيلم </strong></p>
+        <p class="card-text text-right">{{movie.releaseDate}}<strong> : سنة الإنتاج </strong></p>
+          {% for director  in Director %}
+        <p class="card-text text-right">{{director.Director}} <strong>: المخرج </strong></p>
+        <p class="card-text text-right"><strong>الممثلين</strong></p>
+          {% for Actor in Actors  %}
+          <p class="card-text text-right">{{Actor.Actor}} </p>
+          {% endfor %}
+           {% endfor %}
+      </div>
+    </div>
+     <div class="col-md-4">
+      <img src="{{movie.imageMovie.url}}"  width = "145%">
+    </div>
+  </div>
+  </div>
+
+{% endfor %}
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock MoviesDetail %}
+
+
+{% block MoviesReviewList %}
+      <h3 class="mb-5 text-muted text-center">{{reviewname}}</h3>
+
+ {% if not Reviews   %}
+      <h3 class="mb-5 text-muted text-center">لا يوجد مراجعة لهذا الفيلم حتى الأن</h3>
+    {% else %}
+    
+<div class="container-fluid">
+  <div class="row mb-2">
+{% for Review in Reviews %}
+    <div class="col-md-3">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+         <strong>
+         {% for type in types %}
+          {{type.Type}}
+          {% endfor %}
+          </strong>
+          <h3 class="mb-0 text-right">{{Review.reviewTilte}}</h3>
+          <div class="mb-1 text-muted text-right">{{Review.Timestamp}}</div>
+          <div class="mb-1 text-muted text-right"><a href="#"  class="mb-1 text-muted text-right">{{Review.ReviewAuthor}}</a> : الكاتب</div>
+          <p class="card-text mb-auto text-right">{{Review.Moviesreview |truncatechars:150}}</p>
+          <a href="{% url 'review' Review.MoviesTilte Review.ReviewAuthor %}" class= "text-right">أكمل القراءة</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+        </div>
+      </div> 
+  {% endfor %}     
+    {% endif %}
+    </div>
+<div>
+
+{% endblock MoviesReviewList %}
+
+

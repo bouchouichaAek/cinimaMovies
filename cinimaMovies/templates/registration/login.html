@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block login %}
+
+<form class = "m-5" method="POST" action="">
+{% csrf_token %}
+<div class = "float-right">
+    <div class="form-group">
+    <label class="float-right" for="exampleInputEmail1"> : إسم المستخدم</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "username">
+  </div>
+    <div class="form-group">
+    <label class="float-right" for="exampleInputPassword1"> : كلمة المرور</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name = "password">
+  </div>
+    <label class = "float-right"> إذا كنت لا تملك حساب    <a href="{% url 'regitraion'  %}"> أنشأ واحدا </a> </label>
+    
+    <br>
+    <br>
+    {% for message in messages  %}
+      <div class="alert alert-danger" role="alert">
+          {{message}}
+      </div>
+    {% endfor %}
+    
+    <br>
+  <input type="submit" class="float-right btn btn-primary" value = "Sign in">
+
+    
+  </div>
+  
+</form>
+      
+
+{% endblock  %}

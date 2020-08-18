@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-fluid ">
+<div class="row justify-content-md-center">
+  {% for other_Movies in other_Movies  %}
+  <div class= "col-3 mt-5">
+    <div class="card">
+      <img class="card-img-top" src="{{other_Movies.imageMovie.url}}" alt="Card image cap">
+      <div class="card-body">
+        <h4 class="card-title text-center">{{other_Movies.movieName}}</h4>
+        <h5 class="card-title text-center">مراجعة من طرف عبد القادر</h5>
+        <p class="card-text text-right"> من منا لم يشاهد فيلم الأشهر على الإطلاق الخلاص من الشاوشنك </p>
+        <a href="{% url 'ReviewView' other_Movies.id %}" class="btn btn-primary">.... إقرأ المزيد</a>
+      </div>
+    </div>
+  </div>
+  {% endfor  %}
+{% for movie in movies  %}
+  <div class="col-6 m-0 p-0 bg-white ">
+    <div class="p-lg-5 mx-auto my-5 text-center p-2">
+    <h1 class="display-4 font-weight-normal p-2 lead">{{movie.movieTitle}}</h1>
+    <p>
+      <strong> قصة الفيلم : </strong>{{movie.description}} 
+    </p>
+    <img class="m-5" src="{{movie.imageMovie.url}}" >
+    {% if movie.reviewMovie == None %}
+      <p>لا يوجد مراجعة لهذا الفيلم</p>
+    {% else %}
+      <p>{{movie.reviewMovie}}</p>
+    {% endif %}
+  </div>
+  {% endfor  %}
+</div>
+<div>
+  <div>
+    <a class="btn btn-primary" href="#" >إضافة مراجعة لهذا الفيلم</a> 
+  </div>
+</div>
+</div>
+</div>
+<br>
+
+
+
+
+{% endblock content %}
+

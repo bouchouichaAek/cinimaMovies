@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+ 
+
+
+{% block review %}
+
+<main role="main" class="container-fluid">
+  <div class="row">
+  {% for Review in  Reviews %} 
+    <div class="col-md-8 blog-main mt-5">
+      <div class="blog-post">
+        <h2 class="blog-post-title text-right">{{Review.reviewTilte}}</h2>
+        <p class="blog-post-meta text-right">{{Review.Timestamp}} <a href="#">{{Review.ReviewAuthor}}</a></p>
+
+        <p class="text-right text-right" >{{Review.Moviesreview}}</p>
+      </div><!-- /.blog-post -->
+
+       {% endfor %}
+
+
+    </div><!-- /.blog-main -->
+
+    <aside class="col-md-3 mr-4 mt-4">
+{% for movie in movieList  %}  
+  
+<div class="card" style="width: 18rem;">
+  <img src="{{movie.imageMovie.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title text-center">{{movie.movieTitle}}</h5>
+    <p class="card-text text-right">{{movie.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item text-right">{{movie.duration}}  :<strong> مدة الفيلم </strong></li>
+    <li class="list-group-item text-right">{{movie.releaseDate}}<strong> : سنة الإنتاج </strong></li>
+   {% for director  in Director %} 
+    <li class="list-group-item text-right">{{director.Director}} <strong>: المخرج </strong></</li>
+   {% endfor %}
+  </ul>
+
+</div>
+  <div class="card-body">
+  <a href="{% url 'movie' movie.movieTitle %}" class="btn btn-outline-primary">اقرأ مراجعات حول هذا الفليم</a>
+  </div>
+{% endfor %}
+
+      <div class="p-4">
+        <h4 class="font-italic">Archives</h4>
+        <ol class="list-unstyled mb-0">
+        {% for Type in Types %}
+          <li><a href="#"> {{Type.Type}}</a></li>
+        {% endfor %}
+        </ol>
+      </div>
+    </aside><!-- /.blog-sidebar -->
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+
+{% endblock review %}
