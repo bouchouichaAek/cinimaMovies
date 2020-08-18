@@ -1,5 +1,7 @@
 # cinimaMovies
 
+#                                                                     وقع عربي لكتابة مراجعات الأفلام بإستخدام دجانغو
+#                                                                               SQLite3  قاعدة بيانات 
 
 ![firstscreen](https://user-images.githubusercontent.com/34989881/90559102-6a6f1000-e19d-11ea-8334-4767291b7129.jpg)
 ![secondscreen](https://user-images.githubusercontent.com/34989881/90559108-6c38d380-e19d-11ea-975e-ae11f41a115c.jpg)
